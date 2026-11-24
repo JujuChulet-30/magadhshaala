@@ -1,94 +1,69 @@
-# BiharShala — Bihar School Learning Hub
+# MagadhShala (मगधशाला)
 
-A responsive, static website prototype for a proposed school learning and resource portal for Bihar. It is inspired by the broad information architecture of DigiShaala's CBSE hub (role-based portals, student activities, teacher resources and submissions), but uses original branding, layout, copy and code.
+A responsive, bilingual (English/Hindi) static website prototype for a Bihar-focused school learning and resource hub.
 
-**Status:** Front-end prototype / pre-work demonstration. Not an official Government of Bihar, Bihar Board, SCERT or education department platform.
+## Pages
 
-## Live demo locally
+- `index.html` — public landing page and portal directory
+- `student.html` — student activity library, grade filters, progress tracker and demo project submission form
+- `teacher.html` — teacher resource centre
+- `leadership.html` — school leadership hub
 
-No build tools, package manager or server are required.
+## Technology
 
-1. Download or clone this repository.
-2. Open `index.html` in a modern browser.
-3. Navigate to Student, Teacher and School Leadership portals.
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Browser `localStorage` for language preference, activity completion and demo submissions
+- No build step, package manager, API key or server required
 
-For a local web server, run `python3 -m http.server 8000` in the project directory and visit `http://localhost:8000`.
+## Run locally
 
-## Included functionality
+Open `index.html` in a browser. For a local web server, run:
 
-- Responsive landing page and role-based navigation.
-- Student portal with sample activities, grade filters, search and completion checklist.
-- Student completion state stored in browser `localStorage`.
-- Student project submission demo form; submissions are stored only in that browser's `localStorage`.
-- Teacher resource centre and school leadership resource hub.
-- Mobile navigation and date/year display.
-- Basic English/Hindi toggle on the landing page.
+```bash
+python3 -m http.server 8000
+```
 
-## Important limitations
-
-This is a static GitHub Pages prototype. It does **not** include user accounts, central database, secure file uploads, school verification, admin dashboard, analytics, real-time sync, certificates or a working central submission workflow. The form data is not sent to a server. Resource entries are examples and do not represent official curriculum or approved government material. Do not collect real student personal data through this prototype.
-
-For production, plan an authenticated backend, role-based access, secure storage, consent and privacy notices, audit logs, backup, moderation and an authorised data governance owner. Verify all Bihar curriculum alignment and resource links with the relevant education authority before publishing.
+Then open `http://localhost:8000`.
 
 ## Deploy to GitHub Pages
 
-1. Sign in to GitHub and create a new **public** repository, for example `biharshala`.
-2. Keep the repository empty (do not initialise with a README if you plan to upload this folder as-is).
-3. On your computer, unzip the project. Open Terminal in the `biharshala` folder.
-4. Run:
+1. Create a public GitHub repository named `magadhshala`.
+2. Upload the **contents** of this folder to the repository root. `index.html`, `app.js` and `styles.css` must be in the root.
+3. Open **Settings → Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**.
+5. Choose branch `main` and folder `/(root)`, then save.
+6. GitHub Pages will publish the site at `https://YOUR-USERNAME.github.io/magadhshala/`.
 
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial BiharShala website prototype"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/biharshala.git
-   git push -u origin main
-   ```
+## Language switching
 
-5. In the repository, open **Settings → Pages**.
-6. Under **Build and deployment**, choose **Deploy from a branch**.
-7. Select branch **main** and folder **/(root)**, then click **Save**.
-8. Wait for the Pages deployment to finish. Your site will be available at:
+The language selector is available on every page. It switches all page copy, navigation, labels, notices, form text, dynamic activity cards and resource descriptions between English and Hindi. The selected language is saved in `localStorage` under `magadhshala_language`, so it remains selected while navigating between pages in the same browser.
 
-   `https://YOUR-USERNAME.github.io/biharshala/`
+To reset the language, clear the site's local storage or run this in the browser console:
 
-9. Test the homepage and all three portal links on desktop and mobile.
-
-### Alternative: upload through GitHub website
-
-Create the repository → **Add file → Upload files** → drag all files and folders from this project into the upload area → commit to `main` → configure Settings → Pages as above.
-
-## Suggested next development phases
-
-1. Confirm name, identity, target grades, language and content ownership.
-2. Map activities and resources to approved Bihar curriculum and programme priorities.
-3. Add school/district metadata and role-based sign-in.
-4. Build backend APIs, database, file storage and admin workflows.
-5. Add dashboards, reporting, consent/privacy controls and accessibility testing.
-6. Pilot with a small set of schools before statewide rollout.
-
-## Project structure
-
-```text
-biharshala/
-├── index.html          # Landing page
-├── student.html        # Student portal
-├── teacher.html        # Teacher resource centre
-├── leadership.html     # School leadership hub
-├── styles.css          # Shared responsive design system
-├── app.js              # Navigation, filters, progress and demo form logic
-├── README.md           # Setup, deployment and limitations
-└── LICENSE             # MIT license for this original prototype code
+```js
+localStorage.removeItem('magadhshala_language');
+location.reload();
 ```
 
-## Customisation
+## Prototype limitations and production requirements
 
-- Replace sample activities in `app.js` with approved activity records.
-- Replace resource placeholders in `app.js` with approved document URLs and descriptions.
-- Update page text and visual identity in the HTML/CSS files.
-- If adding real student accounts or submissions, do not use `localStorage` as a substitute for a secure backend.
+- Activity completion and project submission are stored only in the current browser. They are not sent to a school or central dashboard.
+- Resource links are demonstration interactions. Replace them with approved, accessible learning materials.
+- There is no login, role-based access, central database, file upload service, analytics backend or administrator dashboard.
+- Sample activities are illustrative and are not represented as an approved Bihar Board or SCERT curriculum.
+- Before collecting identifiable student or teacher information, implement consent, data minimisation, security, retention and authorised hosting requirements.
+- This is an independent prototype and is not an official Government of Bihar website.
 
-## Credits and naming
+## Suggested next development phase
 
-BiharShala is a proposed working name only. Check trademark, domain and social handle availability before adopting it formally. This project is an independent prototype and is not affiliated with DigiShaala, Adobe, CBSE or the Government of Bihar.
+1. Validate content against Bihar SCERT and relevant programme requirements.
+2. Conduct usability testing with students, teachers and school leaders.
+3. Define authentication and roles.
+4. Add an approved backend and database.
+5. Add central submissions, reporting and district-level dashboards.
+
+## License
+
+See `LICENSE`.
